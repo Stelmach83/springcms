@@ -22,7 +22,7 @@ public class Article implements EntityInterface {
     @JoinColumn(name = "author_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Author author;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
     @Column(length = 100)
     @NotNull
