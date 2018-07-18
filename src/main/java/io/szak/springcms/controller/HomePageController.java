@@ -27,12 +27,24 @@ public class HomePageController {
             a.setContent(shortCont);
         }
         List<Category> categoryList = entityDao.loadAllCategories();
-        Category cat = entityDao.loadCategoryByName("cars");
-        List<Article> articles = cat.getArticles();
-        System.out.println(articles);
         model.addAttribute("lista", articleList);
         model.addAttribute("categ", categoryList);
         return "articles";
+    }
+
+    @RequestMapping("/articles/{name}")
+    public String articlesByCategory(@PathVariable String name, Model model) {
+        Category cat = entityDao.loadCategoryByName(name);
+        List<Article> articles = cat.getArticles();
+        for (Article a : articles) {
+            String shortCont = a.getContent().substring(0, 200) + "...";
+            a.setContent(shortCont);
+        }
+        List<Category> categoryList = entityDao.loadAllCategories();
+        model.addAttribute("thiscat", cat);
+        model.addAttribute("lista", articles);
+        model.addAttribute("categ", categoryList);
+        return "bycategory";
     }
 
     @RequestMapping("/loadArticle/{id}")

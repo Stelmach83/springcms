@@ -17,9 +17,11 @@
     <h4>
         <c:forEach var="cat" items="${categ}">
             <c:set var="name" value="${cat.getName()}"/>
-            <a href="#" style="padding-right: 1em">${fn:toUpperCase(name)}</a>
+            <a href="/articles/${cat.getName()}" style="padding-right: 1em">${fn:toUpperCase(name)}</a>
         </c:forEach>
     </h4>
+    <br>
+    <h4>MOST RECENT</h4>
     <br>
 
     <c:forEach var="a" items="${lista}">

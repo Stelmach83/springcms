@@ -135,9 +135,9 @@ public class DBInit {
         article7.addCategory(c3);
         article7.addCategory(c2);
         article8.addCategory(c4);
-        article8.addCategory(c5);
+        article8.addCategory(c3);
         article9.addCategory(c4);
-        article9.addCategory(c5);
+        article9.addCategory(c3);
         article10.addCategory(c3);
         article10.addCategory(c1);
         article11.addCategory(c1);
