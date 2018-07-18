@@ -23,10 +23,13 @@ public class HomePageController {
     public String homePage(Model model) {
         List<Article> articleList = entityDao.loadSomeArticles(5);
         for (Article a : articleList) {
-            String shortCont = a.getContent().substring(0, 100);
+            String shortCont = a.getContent().substring(0, 200) + "...";
             a.setContent(shortCont);
         }
         List<Category> categoryList = entityDao.loadAllCategories();
+        Category cat = entityDao.loadCategoryByName("cars");
+        List<Article> articles = cat.getArticles();
+        System.out.println(articles);
         model.addAttribute("lista", articleList);
         model.addAttribute("categ", categoryList);
         return "articles";

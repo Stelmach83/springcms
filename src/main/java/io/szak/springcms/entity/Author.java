@@ -3,7 +3,7 @@ package io.szak.springcms.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "authors")
+@Table(name = "author")
 public class Author implements EntityInterface {
 
     @Id

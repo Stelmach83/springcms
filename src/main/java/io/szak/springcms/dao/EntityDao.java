@@ -44,7 +44,7 @@ public class EntityDao {
     }
 
     public List<Article> loadSomeArticles(int limit) {
-        Query query = entityManager.createQuery("SELECT art FROM Article art ORDER BY art.title desc");
+        Query query = entityManager.createQuery("SELECT art FROM Article art ORDER BY art.created desc");
         List<Article> articleList = query.setMaxResults(limit).getResultList();
         return articleList;
     }
@@ -55,18 +55,11 @@ public class EntityDao {
         return categoryList;
     }
 
-    // QUERY TO LOAD ALL ARTICLES BY CATEGORY
-    public List<Article> loadByCategory() {
-        Query query = entityManager.createQuery("");
-        List<Article> articleList = query.getResultList();
-        return articleList;
-    }
-
-    // QUERY TO LOAD ALL CATEGORIES IN ARTICLE
-    public List<Category> loadCategoriesInArticle() {
-        Query query = entityManager.createQuery("");
-        List<Category> categoryList = query.getResultList();
-        return categoryList;
+    public Category loadCategoryByName(String name) {
+        Query query = entityManager.createQuery("SELECT cat FROM Category cat WHERE cat.name = :name");
+        query.setParameter("name", name);
+        Category category = (Category) query.getSingleResult();
+        return category;
     }
 
 }

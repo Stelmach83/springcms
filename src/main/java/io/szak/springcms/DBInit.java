@@ -7,7 +7,6 @@ import io.szak.springcms.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class DBInit {
@@ -120,29 +119,29 @@ public class DBInit {
         entityDao.saveEntity(article11);
 
 
-        article1.getCategoryList().add(c1);
-        article1.getCategoryList().add(c2);
-        article2.getCategoryList().add(c3);
-        article2.getCategoryList().add(c2);
-        article3.getCategoryList().add(c4);
-        article3.getCategoryList().add(c5);
-        article4.getCategoryList().add(c4);
-        article4.getCategoryList().add(c5);
-        article5.getCategoryList().add(c3);
-        article5.getCategoryList().add(c1);
+        article1.addCategory(c1);
+        article1.addCategory(c2);
+        article2.addCategory(c3);
+        article2.addCategory(c2);
+        article3.addCategory(c4);
+        article3.addCategory(c5);
+        article4.addCategory(c4);
+        article4.addCategory(c5);
+        article5.addCategory(c3);
+        article5.addCategory(c1);
 
-        article6.getCategoryList().add(c1);
-        article6.getCategoryList().add(c2);
-        article7.getCategoryList().add(c3);
-        article7.getCategoryList().add(c2);
-        article8.getCategoryList().add(c4);
-        article8.getCategoryList().add(c5);
-        article9.getCategoryList().add(c4);
-        article9.getCategoryList().add(c5);
-        article10.getCategoryList().add(c3);
-        article10.getCategoryList().add(c1);
-        article11.getCategoryList().add(c1);
-        article11.getCategoryList().add(c2);
+        article6.addCategory(c1);
+        article6.addCategory(c2);
+        article7.addCategory(c3);
+        article7.addCategory(c2);
+        article8.addCategory(c4);
+        article8.addCategory(c5);
+        article9.addCategory(c4);
+        article9.addCategory(c5);
+        article10.addCategory(c3);
+        article10.addCategory(c1);
+        article11.addCategory(c1);
+        article11.addCategory(c2);
 
         entityDao.updateEntity(article1);
         entityDao.updateEntity(article2);

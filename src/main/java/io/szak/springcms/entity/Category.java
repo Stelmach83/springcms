@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "category")
 public class Category implements EntityInterface {
 
     @Id
@@ -14,9 +14,8 @@ public class Category implements EntityInterface {
     @Column(length = 100, nullable = false)
     private String name;
     private String description;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "categoryList")
-//    @JoinTable(name = "article_category", joinColumns = {@JoinColumn(name = "category_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
-    private List<Article> articleList = new ArrayList<>();
+    @ManyToMany(mappedBy = "categories")
+    private List<Article> articles = new ArrayList<>();
 
 
     public Category() {
@@ -55,12 +54,12 @@ public class Category implements EntityInterface {
         this.description = description;
     }
 
-    public List<Article> getArticleList() {
-        return articleList;
+    public List<Article> getArticles() {
+        return articles;
     }
 
-    public void setArticleList(List<Article> articleList) {
-        this.articleList = articleList;
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
     @Override

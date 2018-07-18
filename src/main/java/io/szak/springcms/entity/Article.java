@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "articles")
+@Table(name = "article")
 public class Article implements EntityInterface {
 
     @Id
@@ -31,9 +31,9 @@ public class Article implements EntityInterface {
     @Column(length = 100)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated = new Date();
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "article_category", joinColumns = {@JoinColumn(name = "article_id")}, inverseJoinColumns = {@JoinColumn(name = "category_id")})
-    private List<Category> categoryList = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 
     public Article() {
     }
@@ -86,12 +86,14 @@ public class Article implements EntityInterface {
         this.updated = updated;
     }
 
-    public List<Category> getCategoryList() {
-        return categoryList;
+    public void addCategory(Category category) {
+        categories.add(category);
+        category.getArticles().add(this);
     }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+    public void removeCategory(Category category) {
+        categories.remove(category);
+        category.getArticles().remove(this);
     }
 
     @Override
